@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristoffer | Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="frosted-glass">
+            <div class="text-center text-white">
+                <h1 class="display-4">Welcome to My Portfolio</h1>
+                <p class="lead">I am Kristoffer, a FrontEnd Dev.</p>
+            </div>
+        </div>
+        <div class="arrow-container position-absolute bottom-0">
+            <a href="#about" class="text-white">
+                <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
+            </a>
+        </div>
+    </section>
+    <!-- Full-Height About Section -->
+    <section id="about" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="container text-center">
+            <h2 class="display-4">About Me</h2>
+            <p class="lead">I am a FontEnd specializing in Design.</p>
+            <p id="typing-effect" class="typing-effect"></p>
+            <p id="thanks-message" style="opacity: 0; transition: opacity 0.5s;">Thanks for your time.</p>
+        </div>
+    
+        <div class="arrow-container position-absolute bottom-0">
+            <a href="#projects" class="text-dark">
+                <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
+            </a>
+        </div>
+    </section>
+    
+
+    <!-- Projects Section -->
+<section id="projects" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <h2 class="text-center mb-4">Projects</h2>
+        <div class="row">
+            <!-- Project Card 1 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card frosted-glass-2">
+                    <img src="images/project1.jpg" class="card-img-top" alt="Project 1 Image">
+                    <div class="card-body">
+                        <h5 class="card-title">DayZ Support Bot</h5>
+                        <p class="card-text">A Chatbot for the game DayZ.</p>
+                        <p><a href="https://github.com/Zarser/Dayz-Support-Bot" target="_blank">View Project</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card frosted-glass-2">
+                    <img src="images/project2.jpg" class="card-img-top" alt="Project 2 Image">
+                    <div class="card-body">
+                        <h5 class="card-title">ToDo List</h5>
+                        <p class="card-text">A ToDo List in Python.</p>
+                        <p><a href="https://github.com/Zarser/ToDoListSpecial" target="_blank">View Project</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card frosted-glass-2">
+                    <img src="images/project3.jpg" class="card-img-top" alt="Project 3 Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Cakery</h5>
+                        <p class="card-text">Website for cakes.</p>
+                        <p><a href="https://github.com/Zarser/Cakery" target="_blank">View Project</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arrow to Scroll to Contact Section -->
+    <div class="arrow-container position-absolute bottom-0">
+        <a href="#contact" class="text-dark">
+            <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
+        </a>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container text-center">
+        <h2>Contact Me</h2>
+        <p>If you would like to get in touch, feel free to reach out!</p>
+        <!-- Up arrow for scrolling to the top -->
+        <div class="arrow-container">
+            <a href="#hero">
+                <img src="images/up-arrow.png" class="arrow" alt="Up Arrow">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

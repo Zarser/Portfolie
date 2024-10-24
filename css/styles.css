@@ -1,0 +1,255 @@
+/* Full-height sections */
+#hero, #about, #projects, #contact {
+    min-height: 100vh;  /* Minimum height to ensure full screen */
+    width: 100vw;   /* Full width */
+    display: flex;  /* Use Flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center;     /* Center content vertically */
+    position: relative; /* Required for the arrow container */
+    padding: 20px;    /* Add some padding */
+    text-align: center; /* Center text */
+    background-color: black; /* Black background to prevent any white flashes */
+    transition: opacity 0.5s ease-in-out; /* Ensure transition on fade */
+}
+
+/* Background image for the hero section */
+#hero {
+    background-image: url('../images/moon.png');
+    background-size: cover; /* Ensure the background covers the section */
+    background-position: center; /* Start centered */
+    color: white; /* Text color for the hero section */
+    min-height: 100vh; /* Ensure full height */
+    overflow: hidden; /* Hide overflow for smoother effect */
+    transition: background-position 0.3s ease, background-size 0.3s ease; /* Smooth transitions */
+}
+
+/* Frosted glass effect */
+.frosted-glass, .frosted-glass-2 {
+    background: rgba(255, 255, 255, 0.048); /* Semi-transparent white background */
+    backdrop-filter: blur(3px); /* Frosted glass effect */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px; /* Padding inside the box */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin: auto; /* Center the box horizontally */
+    max-width: 80%; /* Set a maximum width */
+    text-align: center; /* Center the text */
+    position: relative; /* Positioning context for the hover effect */
+    z-index: 1; /* Ensure it's above the background */
+}
+
+/* Hover effect for background movement and zoom */
+.frosted-glass:hover ~ #hero,
+.frosted-glass:focus-within ~ #hero {
+    transform: scale(1.2); /* Zoom in by 20% */
+    background-position: center; /* Keep center for smooth zoom */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #hero {
+        background-size: cover; /* Ensure the background scales on smaller devices */
+    }
+
+    .frosted-glass {
+        padding: 20px; /* Less padding on smaller screens */
+        max-width: 90%; /* Increase max width for smaller screens */
+    }
+
+    /* Disable hover effect on mobile devices */
+    .frosted-glass:hover ~ #hero,
+    .frosted-glass:focus-within ~ #hero {
+        transform: none; /* Remove zoom effect */
+    }
+}
+
+/* For extra small devices */
+@media (max-width: 576px) {
+    .frosted-glass {
+        padding: 15px; /* Less padding */
+        max-width: 95%; /* Further increase max width */
+    }
+
+    h1, h2 {
+        font-size: 1.8rem; /* Adjust title size */
+    }
+
+    p {
+        font-size: 0.85rem; /* Adjust paragraph size */
+    }
+}
+
+/* Arrow styling */
+.arrow-container {
+    position: absolute; /* Position the arrow */
+    bottom: 20px; /* Space from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+
+.arrow {
+    width: 40px; /* Smaller arrow width */
+    animation: bounce 2s infinite; /* Bounce effect */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.arrow:hover {
+    opacity: 0.7; /* Slight opacity change on hover */
+}
+
+/* Card styling */
+.card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Card shadow */
+    margin: 0 auto; /* Center cards */
+    padding: 10px; /* Add some padding to cards */
+}
+
+/* Card image size */
+.card-img-top {
+    height: 80px; /* Further reduced height for images */
+    object-fit: cover; /* Ensure images scale properly */
+}
+
+/* Responsive adjustments for cards */
+@media (max-width: 768px) {
+    .col-md-6, .col-lg-4 {
+        flex: 0 0 100%; /* Make cards full width on smaller screens */
+        max-width: 100%; /* Ensure no overflow */
+    }
+    
+    .card {
+        margin-bottom: 10px; /* Add margin between cards */
+    }
+}
+
+/* Adjustments for extra small devices */
+@media (max-width: 576px) {
+    .card {
+        max-width: 90%; /* Limit the card width on very small screens */
+        margin: 0 auto; /* Center the card */
+    }
+    
+    h2 {
+        font-size: 1.5rem; /* Smaller title font size */
+    }
+    
+    p {
+        font-size: 0.75rem; /* Smaller paragraph size */
+    }
+
+    .arrow {
+        width: 30px; /* Smaller arrow on very small devices */
+    }
+}
+
+/* Responsive font sizing */
+h1, h2 {
+    font-size: 2.5rem; /* Font size for larger screens */
+}
+
+p {
+    font-size: 1.25rem; /* Font size for paragraphs */
+}
+
+/* Media Queries for Font Sizes */
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 2rem; /* Smaller font size on smaller devices */
+    }
+
+    p {
+        font-size: 1rem; /* Smaller paragraph size */
+    }
+
+    .arrow {
+        width: 40px; /* Smaller arrow on smaller devices */
+    }
+}
+
+/* Navigation positioning */
+nav {
+    right: 20px; /* Space from the right side */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+}
+
+/* Navigation icons */
+.nav-icon {
+    max-width: 50px; /* Set max width for icons */
+    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+/* Zoom effect on hover */
+.nav-link:hover .nav-icon {
+    transform: scale(1.2); /* Zoom in on hover */
+}
+
+/* Responsive navigation styles */
+@media (max-width: 767px) {
+    nav {
+        right: 0; /* Center navigation at the top */
+        top: 0; /* Align to the top */
+        transform: translateX(-50%); /* Adjust to center horizontally */
+        left: 50%; /* Center horizontally */
+        margin-top: 10px; /* Space from the top */
+    }
+
+    /* Remove margins from nav items on smaller screens */
+    .nav-item {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 10px; /* Space between items */
+    }
+
+    .nav-icon {
+        max-width: 40px; /* Adjust icon size for mobile */
+    }
+}
+
+html, body {
+    background-color: black; /* Ensures black background during transitions */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Base styles for sections */
+section {
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+    position: relative; /* Required for absolute positioning in child elements */
+}
+
+/* Active section styles */
+section.active {
+    opacity: 1; /* Fully visible */
+}
+
+/* Text visibility during transitions */
+.text-container {
+    position: relative; /* Ensure it's on top */
+    z-index: 2; /* Keep it above other elements */
+    opacity: 1; /* Ensure text is visible */
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for text */
+}
+
+/* When the section is not active, make text invisible */
+.section:not(.active) .text-container {
+    opacity: 0; /* Fade out text when section is inactive */
+}
+
+body {
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0; /* Fade out the body */
+}
