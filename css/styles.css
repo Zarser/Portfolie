@@ -152,10 +152,12 @@
 /* Responsive font sizing */
 h1, h2 {
     font-size: 2.5rem; /* Font size for larger screens */
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 p {
     font-size: 1.25rem; /* Font size for paragraphs */
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 /* Media Queries for Font Sizes */
@@ -248,8 +250,66 @@ section.active {
 body {
     transition: background-color 0.5s ease, opacity 0.5s ease;
     opacity: 1;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 body.fade-out {
     opacity: 0; /* Fade out the body */
+}
+
+.social-icons {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center icons */
+    margin-top: 20px; /* Space above icons */
+}
+
+.social-icon {
+    margin: 0 15px; /* Space between icons */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.social-icon img {
+    width: 40px; /* Set a fixed width for icons */
+    height: 40px; /* Set a fixed height for icons */
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+/* Contact Section Styling */
+.contact-title {
+    position: relative; /* Positioning for the hover effect */
+    transition: color 0.3s; /* Smooth transition for color */
+}
+
+/* Hover effect */
+.contact-title:hover {
+    color: transparent; /* Make text transparent */
+}
+
+.contact-title:hover::after {
+    content: "Kristoffer.Hsson@hotmail.com"; /* Email to display on hover */
+    color: #343a40; /* Set color of the email */
+    position: absolute; /* Position it over the original text */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    width: 100%; /* Ensure it covers the original text */
+    text-align: center; /* Center the text */
+}
+
+.cv-download {
+    margin-top: 20px; /* Space between icons and download link */
+}
+
+.cv-download a {
+    text-decoration: none; /* Remove underline */
+    padding: 10px 20px; /* Padding for button */
+    color: white; /* White text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+h2,h3,h5 {
+color: white;
 }

@@ -126,3 +126,7 @@ const textToType = `As a junior frontend developer, I focus on creating visually
 
 
 
+
+
+
+
