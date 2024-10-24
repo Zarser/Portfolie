@@ -86,36 +86,54 @@ setupHoverEffects();
 window.addEventListener('resize', setupHoverEffects);
 // The text message typing
 const textToType = `As a junior frontend developer, I focus on creating visually appealing and user-friendly websites. 
-                            I work with HTML, CSS, and JavaScript to build responsive layouts and interactive elements. 
-                            I'm always learning new frameworks and improving my skills, and I enjoy solving problems and bringing designs to life. 
-                            I pay close attention to detail and am eager to keep growing. 
-                            While I’m still gaining experience, I’m passionate about creating great user experiences and contributing to development teams.`;
+                    I work with HTML, CSS, and JavaScript to build responsive layouts and interactive elements. 
+                    I'm always learning new frameworks and improving my skills, and I enjoy solving problems and bringing designs to life. 
+                    I pay close attention to detail and am eager to keep growing. 
+                    While I’m still gaining experience, I’m passionate about creating great user experiences and contributing to development teams.`;
 
-        let index = 0;
-        const typingElement = document.getElementById('typing-effect');
-        const thanksMessage = document.getElementById('thanks-message');
+let index = 0;
+const typingElement = document.getElementById('typing-effect');
+const thanksMessage = document.getElementById('thanks-message');
 
-        function type() {
-            if (index < textToType.length) {
-                typingElement.textContent += textToType.charAt(index);
-                index++;
-                setTimeout(type, 50); // Adjust typing speed
-            } else {
-                // Start fade out after typing is done
-                setTimeout(() => {
-                    typingElement.classList.add('fade-out'); // Add fade out class
-                    // Wait for the fade-out transition to complete before showing the new message
-                    setTimeout(() => {
-                        typingElement.style.display = 'none'; // Hide typing element
-                        thanksMessage.style.opacity = '1'; // Show thanks message
-                    }, 6000); // Wait for fade out to complete
-                }, 500); // Wait before starting to fade out
-            }
+function type() {
+    if (index < textToType.length) {
+        typingElement.textContent += textToType.charAt(index);
+        index++;
+        setTimeout(type, 50); // Adjust typing speed
+    } else {
+        // Start fade out after typing is done
+        setTimeout(() => {
+            typingElement.classList.add('fade-out'); // Add fade out class
+            // Wait for the fade-out transition to complete before showing the new message
+            setTimeout(() => {
+                typingElement.style.display = 'none'; // Hide typing element
+                thanksMessage.style.opacity = '1'; // Show thanks message
+            }, 5500); // Wait for fade out to complete
+        }, 500); // Wait before starting to fade out
+    }
+}
+
+function startTyping(entries, observer) {
+    entries.forEach(entry => {
+        console.log('Entry:', entry); // Debugging line
+        // Trigger when at least 10% of the section is visible
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+            type(); // Start typing
+            observer.unobserve(entry.target); // Stop observing after typing starts
         }
+    });
+}
 
-        window.addEventListener('load', () => {
-            type();
-        });
+// Observe the "About Me" section
+const aboutSection = document.getElementById('about');
+const observer = new IntersectionObserver(startTyping, {
+    threshold: 0.1 // Start when 10% of the section is visible
+});
+observer.observe(aboutSection);
+
+
+
+
 
 
 

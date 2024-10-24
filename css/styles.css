@@ -310,6 +310,45 @@ body.fade-out {
     transition: background-color 0.3s; /* Smooth transition for hover */
 }
 
-h2,h3,h5 {
+h2,h3,h5,.touch {
 color: white;
+}
+
+/* Contact section with background image */
+#contact {
+    background-image: url('../images/earth.png'); /* Path to the image */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Gives a parallax scrolling effect */
+    position: relative; /* Ensure positioning */
+    padding: 100px 0; /* Adjust padding for better spacing */
+}
+
+/* Make sure the background adapts responsively */
+@media (max-width: 768px) {
+    #contact {
+        background-attachment: scroll; /* Disable parallax effect on smaller screens */
+        background-size: cover; /* Ensure the background is fully visible */
+        padding: 50px 0; /* Reduce padding on mobile devices */
+    }
+}
+
+/* Styling for Hidden Stars */
+.star {
+    position: absolute; /* Position stars absolutely */
+    width: 1px; /* Small size to resemble a star */
+    height: 1px;
+    background-color: white; /* Star color */
+    border-radius: 50%; /* Circular shape */
+    opacity: 0.5; /* Low opacity to make them subtle */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for the glow */
+    z-index: 2; /* Keep above background */
+}
+
+/* Glow effect on hover */
+.star:hover {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8); /* Bright glow effect */
+    transform: scale(1.5); /* Slightly enlarge the star */
+    opacity: 1; /* Increase opacity to full */
 }
