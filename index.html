@@ -16,33 +16,32 @@
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
         <div class="frosted-glass">
             <div class="text-center text-white">
-                <h1 class="display-4">Welcome to My Portfolio</h1>
-                <p class="lead">I am Kristoffer, a FrontEnd Dev.</p>
+                <h1 class="display-4" id="hero-heading">Welcome to My Portfolio</h1> <!-- Added ID -->
+                <p class="lead" id="hero-lead">I am Kristoffer, a FrontEnd Dev.</p> <!-- Added ID -->
             </div>
         </div>
         <div class="arrow-container position-absolute bottom-0">
-            <a href="#about" class="text-white">
+            <a href="#about" class="text-white" id="up-arrow"> <!-- Added ID for event handling -->
                 <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
             </a>
         </div>
     </section>
+    
     <!-- Full-Height About Section -->
     <section id="about" class="d-flex flex-column justify-content-center align-items-center">
         <div class="container text-center">
-            <h2 class="display-4">About Me</h2>
-            <p class="lead">I am a FontEnd specializing in Design.</p>
-            <p id="typing-effect" class="typing-effect"></p>
-            <p id="thanks-message" style="opacity: 0; transition: opacity 0.5s;">Thanks for your time.</p>
+            <h2 class="display-4" id="section-heading">About Me</h2> <!-- Heading with id -->
+            <p class="lead" id="lead-paragraph">I am a Frontend Developer specializing in Design.</p> <!-- Lead paragraph with id -->
+            <p id="typing-effect" class="typing-effect"></p> <!-- Typing effect placeholder -->
         </div>
-    
+        
         <div class="arrow-container position-absolute bottom-0">
             <a href="#projects" class="text-dark">
                 <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
             </a>
         </div>
     </section>
-    
-
+    >
     <!-- Projects Section -->
 <section id="projects" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container">

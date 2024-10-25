@@ -84,6 +84,7 @@
     bottom: 20px; /* Space from the bottom */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust for centering */
+    z-index: 10; /* Ensure it’s above other content */
 }
 
 .arrow {
@@ -351,4 +352,56 @@ color: white;
     box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8); /* Bright glow effect */
     transform: scale(1.5); /* Slightly enlarge the star */
     opacity: 1; /* Increase opacity to full */
+}
+
+/* Base styling for flashing words */
+.flashing-word {
+    position: absolute;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #ffffff41;
+    animation: flash 1.3s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .flashing-word {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flashing-word {
+        font-size: 0.8rem;
+        animation: flash 1.5s ease-in-out infinite; /* Slightly slower on smaller screens */
+    }
+}
+
+/* Optional fade-out effect for the typing text */
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+#section-heading {
+    font-size: 7rem; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #ffffff; /* Change color if needed */
+}
+
+@media (max-width: 768px) {
+    #section-heading {
+        font-size: 4rem; /* Responsive size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #section-heading {
+        font-size: 3rem; /* Further adjust for very small screens */
+    }
 }

@@ -84,6 +84,8 @@ setupHoverEffects();
 
 // Add a resize event listener to re-setup on window resize
 window.addEventListener('resize', setupHoverEffects);
+
+
 // The text message typing
 const textToType = `As a junior frontend developer, I focus on creating visually appealing and user-friendly websites. 
                     I work with HTML, CSS, and JavaScript to build responsive layouts and interactive elements. 
@@ -93,8 +95,14 @@ const textToType = `As a junior frontend developer, I focus on creating visually
 
 let index = 0;
 const typingElement = document.getElementById('typing-effect');
-const thanksMessage = document.getElementById('thanks-message');
+const sectionHeading = document.getElementById('section-heading'); // Reference to h2 element
+const leadParagraph = document.getElementById('lead-paragraph'); // Reference to lead paragraph
 
+// Console log to ensure elements are selected correctly
+console.log('Heading:', sectionHeading);
+console.log('Paragraph:', leadParagraph);
+
+// Function to type the text
 function type() {
     if (index < textToType.length) {
         typingElement.textContent += textToType.charAt(index);
@@ -103,23 +111,59 @@ function type() {
     } else {
         // Start fade out after typing is done
         setTimeout(() => {
-            typingElement.classList.add('fade-out'); // Add fade out class
-            // Wait for the fade-out transition to complete before showing the new message
+            typingElement.classList.add('fade-out');
+            console.log('Typing complete, starting fade out...');
+            
+            // Wait for the fade-out transition to complete before updating heading and hiding paragraph
             setTimeout(() => {
-                typingElement.style.display = 'none'; // Hide typing element
-                thanksMessage.style.opacity = '1'; // Show thanks message
-            }, 5500); // Wait for fade out to complete
-        }, 500); // Wait before starting to fade out
+                typingElement.style.display = 'none';
+
+                // Change heading to "Skills" and hide lead paragraph
+                sectionHeading.textContent = 'Skills'; 
+                leadParagraph.style.display = 'none'; 
+
+                console.log('Heading changed to "Skills" and lead paragraph hidden.');
+
+                // Start flashing words after typing completes
+                setInterval(createFlashingWords, 700); // Trigger flashing words repeatedly
+            }, 500); // Adjust fade-out delay
+        }, 500); // Delay before starting fade-out
     }
 }
 
+// Function to create flashing words
+function createFlashingWords() {
+    const container = document.querySelector('#about'); // About section
+    const keywords = [
+        'Google', 'ChatGPT', 'Copilot', 'Bootstrap', 'Tailwind', 'Codepen', 'HTML', 'CSS', 
+        'JavaScript', 'C#', 'Python', 'UI/UX', 'Figma', 'Git', 'Github', 'Sweclockers'
+    ];
+
+    keywords.forEach(word => {
+        const wordElement = document.createElement('span');
+        wordElement.textContent = word;
+        wordElement.classList.add('flashing-word');
+
+        // Position words randomly across the viewport
+        wordElement.style.position = 'absolute';
+        wordElement.style.top = Math.random() * 80 + 'vh'; // Keep within visible area
+        wordElement.style.left = Math.random() * 90 + 'vw'; 
+
+        container.appendChild(wordElement);
+
+        // Remove each word after a short time
+        setTimeout(() => {
+            wordElement.remove();
+        }, 2000);
+    });
+}
+
+// Intersection Observer to start typing when the section becomes visible
 function startTyping(entries, observer) {
     entries.forEach(entry => {
-        console.log('Entry:', entry); // Debugging line
-        // Trigger when at least 10% of the section is visible
         if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
-            type(); // Start typing
-            observer.unobserve(entry.target); // Stop observing after typing starts
+            type(); // Start typing effect
+            observer.unobserve(entry.target); // Stop observing after it starts
         }
     });
 }
@@ -131,6 +175,19 @@ const observer = new IntersectionObserver(startTyping, {
 });
 observer.observe(aboutSection);
 
+// Select elements
+const heroHeading = document.getElementById('hero-heading');
+const heroLead = document.getElementById('hero-lead');
+const upArrow = document.getElementById('up-arrow');
+
+// Add click event listener to the up arrow
+upArrow.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor click behavior (scrolling)
+    
+    // Change the heading and hide the paragraph
+    heroHeading.textContent = 'One More Time?';
+    heroLead.style.display = 'none'; // Hide lead paragraph
+});
 
 
 
