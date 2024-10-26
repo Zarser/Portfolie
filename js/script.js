@@ -1,29 +1,62 @@
-// Smooth Scrolling and Fading between Sections
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
+document.addEventListener('DOMContentLoaded', () => {
+    const dots = document.querySelectorAll('.dot');
+    const sections = document.querySelectorAll('section');
 
-        // Get the target section
-        const targetSection = document.querySelector(this.getAttribute('href'));
-        const currentSection = document.querySelector('section.active');
-
-        if (currentSection) {
-            currentSection.classList.remove('active'); // Remove active class to fade out
-
-            // Delay for the fade-out effect
-            setTimeout(() => {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start' // Align to the top of the section
-                });
-
-                // Add active class to fade in the target section
-                setTimeout(() => {
-                    targetSection.classList.add('active');
-                }, 100); // Slight delay before fading in
-            }, 500); // Time for fade-out
-        }
+    // Smooth scrolling to section on dot click
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            sections.forEach(section => section.classList.remove('active'));
+            sections[index].classList.add('active');
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        });
     });
+
+    // Function to determine the active section on scroll
+    const setActiveSection = () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+    
+        // Update dot active states and line visibility
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            const line = document.querySelector('.line'); // Assuming a single line between dots
+        });
+    };
+
+    // Add scroll event listener
+    window.addEventListener('wheel', (event) => {
+        if (event.deltaY > 0) { // Scrolling down
+            const activeSection = document.querySelector('section.active');
+            const nextSection = activeSection.nextElementSibling;
+
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+                nextSection.classList.add('active');
+                activeSection.classList.remove('active');
+            }
+        } else { // Scrolling up
+            const activeSection = document.querySelector('section.active');
+            const prevSection = activeSection.previousElementSibling;
+
+            if (prevSection) {
+                prevSection.scrollIntoView({ behavior: 'smooth' });
+                prevSection.classList.add('active');
+                activeSection.classList.remove('active');
+            }
+        }
+
+        // Prevent default scrolling behavior
+        event.preventDefault();
+    }, { passive: false });
+
+    // Update active section on scroll
+    window.addEventListener('scroll', setActiveSection);
 });
 
 // Fade-in the first section on page load
@@ -31,16 +64,14 @@ window.addEventListener('load', () => {
     const heroSection = document.querySelector('#hero');
     heroSection.classList.add('active'); // Fade-in first section
 });
+
 // Initially set the hero section as active
 document.getElementById('hero').classList.add('active');
 
-
-// Select the frosted glass and hero section elements
-const frostedGlass = document.querySelector('.frosted-glass');
-const heroSection = document.getElementById('hero');
-
 // Function to move the background on hover
 function moveBackground(e) {
+    const frostedGlass = document.querySelector('.frosted-glass');
+    const heroSection = document.getElementById('hero');
     const { clientX, clientY } = e; // Get mouse position
     const { offsetWidth, offsetHeight } = frostedGlass; // Use the frosted glass dimensions
 
@@ -63,6 +94,9 @@ function moveBackground(e) {
 
 // Event listeners for mouse enter and leave
 function setupHoverEffects() {
+    const frostedGlass = document.querySelector('.frosted-glass');
+    const heroSection = document.getElementById('hero');
+
     // Only add hover effects if the screen width is larger than 768px
     if (window.innerWidth > 768) {
         frostedGlass.addEventListener('mouseenter', () => {
@@ -85,7 +119,6 @@ setupHoverEffects();
 // Add a resize event listener to re-setup on window resize
 window.addEventListener('resize', setupHoverEffects);
 
-
 // The text message typing
 const textToType = `As a junior frontend developer, I focus on creating visually appealing and user-friendly websites. 
                     I work with HTML, CSS, and JavaScript to build responsive layouts and interactive elements. 
@@ -98,10 +131,6 @@ const typingElement = document.getElementById('typing-effect');
 const sectionHeading = document.getElementById('section-heading'); // Reference to h2 element
 const leadParagraph = document.getElementById('lead-paragraph'); // Reference to lead paragraph
 
-// Console log to ensure elements are selected correctly
-console.log('Heading:', sectionHeading);
-console.log('Paragraph:', leadParagraph);
-
 // Function to type the text
 function type() {
     if (index < textToType.length) {
@@ -112,17 +141,14 @@ function type() {
         // Start fade out after typing is done
         setTimeout(() => {
             typingElement.classList.add('fade-out');
-            console.log('Typing complete, starting fade out...');
-            
+
             // Wait for the fade-out transition to complete before updating heading and hiding paragraph
             setTimeout(() => {
                 typingElement.style.display = 'none';
 
                 // Change heading to "Skills" and hide lead paragraph
-                sectionHeading.textContent = 'Skills'; 
+                sectionHeading.textContent = ''; 
                 leadParagraph.style.display = 'none'; 
-
-                console.log('Heading changed to "Skills" and lead paragraph hidden.');
 
                 // Start flashing words after typing completes
                 setInterval(createFlashingWords, 700); // Trigger flashing words repeatedly
@@ -175,33 +201,38 @@ const observer = new IntersectionObserver(startTyping, {
 });
 observer.observe(aboutSection);
 
-// Select elements
-const heroHeading = document.getElementById('hero-heading');
-const heroLead = document.getElementById('hero-lead');
-const upArrow = document.getElementById('up-arrow');
+// Function to make the dots clickable and scroll to the respective sections
+document.addEventListener('DOMContentLoaded', () => {
+    const dots = document.querySelectorAll('.dot');
+    const sections = document.querySelectorAll('section'); // Adjusted to select all sections
 
-// Add click event listener to the up arrow
-upArrow.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default anchor click behavior (scrolling)
-    
-    // Change the heading and hide the paragraph
-    heroHeading.textContent = 'One More Time?';
-    heroLead.style.display = 'none'; // Hide lead paragraph
+    // Smooth scrolling to section on dot click
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            sections.forEach(section => section.classList.remove('active')); // Hide all sections
+            sections[index].classList.add('active'); // Show the targeted section
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Update active section on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('data-target') === current) {
+                dot.classList.add('active');
+            }
+        });
+    });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

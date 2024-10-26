@@ -7,126 +7,92 @@
     <title>Kristoffer | Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    
     <!-- Hero Section -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center section">
         <div class="frosted-glass">
             <div class="text-center text-white">
-                <h1 class="display-4" id="hero-heading">Welcome to My Portfolio</h1> <!-- Added ID -->
-                <p class="lead" id="hero-lead">I am Kristoffer, a FrontEnd Dev.</p> <!-- Added ID -->
+                <h1 class="display-4" id="hero-heading">Welcome to My Portfolio</h1>
+                <p class="lead" id="hero-lead">I am Kristoffer, a FrontEnd Dev.</p>
             </div>
-        </div>
-        <div class="arrow-container position-absolute bottom-0">
-            <a href="#about" class="text-white" id="up-arrow"> <!-- Added ID for event handling -->
-                <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
-            </a>
         </div>
     </section>
     
     <!-- Full-Height About Section -->
-    <section id="about" class="d-flex flex-column justify-content-center align-items-center">
+    <section id="about" class="d-flex flex-column justify-content-center align-items-center section">
         <div class="container text-center">
-            <h2 class="display-4" id="section-heading">About Me</h2> <!-- Heading with id -->
-            <p class="lead" id="lead-paragraph">I am a Frontend Developer specializing in Design.</p> <!-- Lead paragraph with id -->
-            <p id="typing-effect" class="typing-effect"></p> <!-- Typing effect placeholder -->
-        </div>
-        
-        <div class="arrow-container position-absolute bottom-0">
-            <a href="#projects" class="text-dark">
-                <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
-            </a>
+            <h2 class="display-4" id="section-heading">About Me</h2>
+            <p class="lead" id="lead-paragraph">I am a Frontend Developer specializing in Design.</p>
+            <p id="typing-effect" class="typing-effect"></p>
         </div>
     </section>
-    >
+
     <!-- Projects Section -->
-<section id="projects" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container">
-        <h2 class="text-center mb-4">Projects</h2>
-        <div class="row">
-            <!-- Project Card 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card frosted-glass-2">
-                    <img src="images/project1.jpg" class="card-img-top" alt="Project 1 Image">
-                    <div class="card-body">
-                        <h5 class="card-title">DayZ Support Bot</h5>
-                        <p class="card-text">Chatbot for DayZ(Game).</p>
-                        <p><a href="https://github.com/Zarser/Dayz-Support-Bot" target="_blank">View Project</a></p>
-                    </div>
+    <section id="projects" class="d-flex flex-column justify-content-center align-items-center section">
+        <div class="project-container" id="projectContainer">
+            <div class="project-item">
+                <img src="images/project1.jpg" class="project-img" alt="Project 1 Image">
+                <div class="project-overlay">
+                    <p class="project-description">Chatbot for DayZ (Game). Guide and Tips&Trix.</p>
+                    <a href="https://github.com/Zarser/Dayz-Support-Bot" target="_blank" class="project-link">View Project</a>
                 </div>
+                <h5 class="project-title">DayZ Support Bot</h5>
             </div>
-            <!-- Project Card 2 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card frosted-glass-2">
-                    <img src="images/project2.jpg" class="card-img-top" alt="Project 2 Image">
-                    <div class="card-body">
-                        <h5 class="card-title">ToDo List</h5>
-                        <p class="card-text">A ToDo List in Python.</p>
-                        <p><a href="https://github.com/Zarser/ToDoListSpecial" target="_blank">View Project</a></p>
-                    </div>
+            <div class="project-item">
+                <img src="images/project1.jpg" class="project-img" alt="Project 2 Image">
+                <div class="project-overlay">
+                    <p class="project-description">A ToDo List application built with Python</p>
+                    <a href="https://github.com/Zarser/ToDoListSpecial" target="_blank" class="project-link">View Project</a>
                 </div>
+                <h5 class="project-title">ToDo List</h5>
             </div>
-            <!-- Project Card 3 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card frosted-glass-2">
-                    <img src="images/project3.jpg" class="card-img-top" alt="Project 3 Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Cakery</h5>
-                        <p class="card-text">Website for cakes.</p>
-                        <p><a href="https://github.com/Zarser/Cakery" target="_blank">View Project</a></p>
-                    </div>
+            <div class="project-item">
+                <img src="images/project1.jpg" class="project-img" alt="Project 3 Image">
+                <div class="project-overlay">
+                    <p class="project-description">A bakery website, school project.</p>
+                    <a href="https://github.com/Zarser/Cakery" target="_blank" class="project-link">View Project</a>
                 </div>
+                <h5 class="project-title">Cakery</h5>
             </div>
         </div>
-    </div>
+    </section>
+    
+    
+    
 
-    <!-- Arrow to Scroll to Contact Section -->
-    <div class="arrow-container position-absolute bottom-0">
-        <a href="#contact" class="text-dark">
-            <img src="images/down-arrow.png" alt="Down Arrow" class="arrow">
-        </a>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-5">
-    <div class="container text-center">
-        <h2 class="contact-title">Contact Me</h2>
-        <p>If you would like to get in <a class="touch">touch</a>, feel free to reach out!</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=100009375588361" target="_blank" class="social-icon" aria-label="Facebook">
-                <img src="images/facebook.png" alt="Facebook Icon">
-            </a>
-            <a href="https://www.linkedin.com/in/kristoffer-hansson-33248a229/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                <img src="images/linkedin.png" alt="LinkedIn Icon">
-            </a>
-            <a href="https://github.com/Zarser" target="_blank" class="social-icon" aria-label="GitHub">
-                <img src="images/github.png" alt="GitHub Icon">
-            </a>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 section">
+        <div class="container text-center">
+            <h2 class="contact-title">Contact Me</h2>
+            <p>If you would like to get in <a class="touch">touch</a>, feel free to reach out!</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=100009375588361" target="_blank" class="social-icon" aria-label="Facebook">
+                    <img src="images/facebook.png" alt="Facebook Icon">
+                </a>
+                <a href="https://www.linkedin.com/in/kristoffer-hansson-33248a229/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn Icon">
+                </a>
+                <a href="https://github.com/Zarser" target="_blank" class="social-icon" aria-label="GitHub">
+                    <img src="images/github.png" alt="GitHub Icon">
+                </a>
+            </div>
+            <div class="cv-download">
+                <a href="path/to/Kristoffer.Hansson.CV.docx" download="Kristoffer.Hansson.CV.docx" class="btn">Download CV</a>
+            </div>
         </div>
-        <!-- Hidden Stars -->
-        <div class="star" style="bottom: 130px; right: 200px;"></div>
-        <div class="star" style="top: 200px; left: 300px;"></div>
-        <div class="star" style="bottom: 100px; left: 600px;"></div>
-        <div class="star" style="bottom: 30px; right: 60px;"></div>
-        <!-- Add more stars with different positions -->
-        <!-- CV Download Link -->
-        <div class="cv-download">
-            <a href="path/to/Kristoffer.Hansson.CV.docx" download="Kristoffer.Hansson.CV.docx" class="btn">Download CV</a>
-        </div>
-        <!-- Up arrow for scrolling to the top -->
-        <div class="arrow-container">
-            <a href="#hero">
-                <img src="images/up-arrow.png" class="arrow" alt="Up Arrow">
-            </a>
-        </div>
+    </section>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="dot" data-target="hero"></div>
+        <div class="dot" data-target="about"></div>
+        <div class="dot" data-target="projects"></div>
+        <div class="dot" data-target="contact"></div>
     </div>
-</section>
-
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

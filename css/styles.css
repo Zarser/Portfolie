@@ -15,6 +15,7 @@
 /* Background image for the hero section */
 #hero {
     background-image: url('../images/moon.png');
+    background-color: black; /* Fallback color */
     background-size: cover; /* Ensure the background covers the section */
     background-position: center; /* Start centered */
     color: white; /* Text color for the hero section */
@@ -105,50 +106,182 @@
     opacity: 0.7; /* Slight opacity change on hover */
 }
 
-/* Card styling */
-.card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Card shadow */
-    margin: 0 auto; /* Center cards */
-    padding: 10px; /* Add some padding to cards */
+/* Project container styling */
+.project-container {
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center the items */
 }
 
-/* Card image size */
-.card-img-top {
-    height: 80px; /* Further reduced height for images */
-    object-fit: cover; /* Ensure images scale properly */
+/* Individual project item styling */
+.project-item {
+    position: relative; /* Make relative to position the overlay */
+    display: flex; /* Use flexbox for each item */
+    flex-direction: column; /* Stack image and title vertically */
+    align-items: center; /* Center align items */
+    margin: 20px; /* Space between items */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for fade-out effect */
 }
 
-/* Responsive adjustments for cards */
+/* Styling for project images */
+.project-img {
+    width: 100px; /* Set a fixed width for images */
+    height: 100px; /* Set height to make them round */
+    border-radius: 50%; /* Make the image round */
+    border: 3px solid white; /* Add a white border */
+    object-fit: cover; /* Ensure the image covers the area */
+    transition: transform 0.3s; /* Add a transition for hover effect */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.63); /* Default no glow */
+}
+
+/* Overlay styling */
+.project-overlay {
+    position: absolute; /* Position it over the image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    width: 200px; /* Set a fixed width for the overlay */
+    height: 200px; /* Set a fixed height for the overlay */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: white; /* Text color */
+    display: flex; /* Use flexbox for centering text */
+    flex-direction: column; /* Stack text vertically */
+    justify-content: center; /* Center the text vertically */
+    align-items: center; /* Center the text horizontally */
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.3s; /* Smooth transition for fade in/out */
+    padding: 10px; /* Add padding for spacing inside the overlay */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
+    z-index: 10; /* Ensure overlay appears above other elements */
+}
+
+/* Show overlay on hover */
+.project-item:hover .project-overlay {
+    opacity: 1; /* Fade in */
+}
+
+/* Title styling */
+.project-title {
+    font-size: 1.2rem; /* Font size for title */
+    color: #333; /* Title color */
+    margin-top: 10px; /* Space between image and title */
+    text-align: center; /* Center title text */
+}
+
+/* Project description styling */
+.project-description {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center align the description */
+    font-size: 0.9rem; /* Adjust font size */
+}
+
+/* Project link styling */
+.project-link {
+    color: #ffffff; /* Link color */
+    text-decoration: underline; /* Underline the link */
+    margin-top: 5px; /* Space above the link */
+}
+
+/* Project item hover effect */
+.project-item:hover .project-img {
+    transform: scale(1.05); /* Slightly zoom in on hover */
+}
+
+/* Fade-out effect */
+.project-item.fade-out {
+    opacity: 0; /* Fade out */
+    transform: translateY(-20px); /* Move up slightly */
+}
+
+/* GitHub info container styling */
+.github-info-container {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center align items */
+    margin-top: 20px; /* Space between projects and GitHub info */
+}
+
+/* Individual GitHub Info Item */
+.github-info-item {
+    display: flex; /* Use flexbox for each item */
+    align-items: center; /* Center align items */
+    margin: 0 15px; /* Space between items */
+    font-size: 1rem; /* Font size for GitHub info */
+    color: #333; /* Text color */
+    opacity: 0; /* Start hidden for animation */
+    transform: scale(0); /* Start scaled down */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+/* Pop-in effect */
+@keyframes pop-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2); /* Slightly larger during the pop */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Return to original size */
+    }
+}
+
+.pop-in {
+    animation: pop-in 0.5s ease forwards; /* Animation effect */
+}
+
+/* Icon styling */
+.icon {
+    margin-right: 5px; /* Space between icon and text */
+    font-size: 1.2rem; /* Increase icon size */
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .col-md-6, .col-lg-4 {
-        flex: 0 0 100%; /* Make cards full width on smaller screens */
-        max-width: 100%; /* Ensure no overflow */
+    .project-img {
+        width: 80px; /* Smaller image size on medium screens */
+        height: 80px; /* Maintain round shape */
     }
-    
-    .card {
-        margin-bottom: 10px; /* Add margin between cards */
+
+    .project-title {
+        font-size: 1rem; /* Smaller title font size */
+    }
+
+    .project-overlay {
+        width: 150px; /* Adjust overlay size for medium screens */
+        height: 150px; /* Adjust overlay size for medium screens */
+    }
+
+    .github-info-item {
+        font-size: 0.9rem; /* Smaller font for GitHub info on medium screens */
     }
 }
 
-/* Adjustments for extra small devices */
+/* Specific adjustments for extra small devices */
 @media (max-width: 576px) {
-    .card {
-        max-width: 90%; /* Limit the card width on very small screens */
-        margin: 0 auto; /* Center the card */
-    }
-    
-    h2 {
-        font-size: 1.5rem; /* Smaller title font size */
-    }
-    
-    p {
-        font-size: 0.75rem; /* Smaller paragraph size */
+    .project-img {
+        width: 60px; /* Further reduce image size */
+        height: 60px; /* Maintain round shape */
     }
 
-    .arrow {
-        width: 30px; /* Smaller arrow on very small devices */
+    .project-title {
+        font-size: 0.8rem; /* Further reduce title font size */
+    }
+
+    .project-overlay {
+        width: 120px; /* Further adjust overlay size for small screens */
+        height: 120px; /* Further adjust overlay size for small screens */
+    }
+
+    .github-info-item {
+        font-size: 0.8rem; /* Further reduce font size for small screens */
     }
 }
+
+
+
 
 /* Responsive font sizing */
 h1, h2 {
@@ -226,7 +359,7 @@ html, body {
 /* Base styles for sections */
 section {
     opacity: 0; /* Start hidden */
-    transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+    transition: opacity 3s ease-in-out; /* Smooth transition for opacity */
     position: relative; /* Required for absolute positioning in child elements */
 }
 
@@ -237,11 +370,10 @@ section.active {
 
 /* Text visibility during transitions */
 .text-container {
-    position: relative; /* Ensure it's on top */
-    z-index: 2; /* Keep it above other elements */
-    opacity: 1; /* Ensure text is visible */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for text */
+    position: relative; /* Ensure it's positioned correctly */
+    z-index: 2; /* Place it above the background */
 }
+
 
 /* When the section is not active, make text invisible */
 .section:not(.active) .text-container {
@@ -252,6 +384,7 @@ body {
     transition: background-color 0.5s ease, opacity 0.5s ease;
     opacity: 1;
     font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden; /* Prevent default scroll */
 }
 
 body.fade-out {
@@ -275,7 +408,7 @@ body.fade-out {
 }
 
 .social-icon:hover {
-    transform: scale(1.1); /* Scale effect on hover */
+    transform: scale(1.2); /* Scale effect on hover */
 }
 
 /* Contact Section Styling */
@@ -291,7 +424,7 @@ body.fade-out {
 
 .contact-title:hover::after {
     content: "Kristoffer.Hsson@hotmail.com"; /* Email to display on hover */
-    color: #343a40; /* Set color of the email */
+    color: #ffffff; /* Set color of the email */
     position: absolute; /* Position it over the original text */
     left: 0; /* Align to the left */
     top: 0; /* Align to the top */
@@ -359,7 +492,7 @@ color: white;
     position: absolute;
     font-size: 2.8rem;
     font-weight: bold;
-    color: #ffffff41;
+    color: #ffffff67;
     animation: flash 1.3s ease-in-out infinite;
     opacity: 0;
 }
@@ -405,3 +538,78 @@ color: white;
         font-size: 3rem; /* Further adjust for very small screens */
     }
 }
+
+p{
+    color: rgba(255, 255, 255, 0.527);
+}
+
+/* Style for the scroll indicator container */
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Glowing effect for dots */
+.dot {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.63); /* Default no glow */
+}
+
+/* Glowing style for active dot */
+.dot.active {
+    background-color: #ffffff33;
+    box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.603), /* Main glow */
+                0 0 10px 8px rgba(255, 255, 255, 0.6), /* Outer glow */
+                0 0 15px 10px rgba(255, 255, 255, 0.4); /* Fading edge */
+}
+
+/* Optional: animate glow for a pulsing effect */
+.dot.active {
+    animation: glow-pulse 1.5s infinite alternate;
+}
+
+/* Keyframes for pulsing glow */
+@keyframes glow-pulse {
+    from {
+        box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8),
+                    0 0 10px 4px rgba(255, 255, 255, 0.6),
+                    0 0 15px 5px rgba(255, 255, 255, 0.4);
+    }
+    to {
+        box-shadow: 0 0 7px 2px rgba(255, 255, 255, 1),
+                    0 0 13px 4px rgba(255, 255, 255, 0.7),
+                    0 0 17px 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Media Query for smaller screens (e.g., max-width: 768px) */
+@media (max-width: 768px) {
+    .dot {
+        width: 12px; /* Smaller width for mobile */
+        height: 12px; /* Smaller height for mobile */
+        margin-right:-15px;
+    }
+}
+
+/* Media Query for extra small screens (e.g., max-width: 480px) */
+@media (max-width: 480px) {
+    .dot {
+        width: 8px; /* Even smaller width for very small screens */
+        height: 8px; /* Even smaller height for very small screens */
+        margin-right:-15px;
+    }
+}
+
+
