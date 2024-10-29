@@ -236,3 +236,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.querySelectorAll('.progress').forEach(progress => {
+    progress.addEventListener('mouseenter', () => {
+        const bar = progress.querySelector('.progress-bar');
+        const targetWidth = progress.getAttribute('data-percentage') + '%';
+        bar.style.width = targetWidth;
+    });
+
+    progress.addEventListener('mouseleave', () => {
+        const bar = progress.querySelector('.progress-bar');
+        bar.style.width = '0'; // Reset width on mouse leave
+    });
+});

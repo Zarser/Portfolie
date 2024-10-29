@@ -79,210 +79,6 @@
     }
 }
 
-/* Arrow styling */
-.arrow-container {
-    position: absolute; /* Position the arrow */
-    bottom: 20px; /* Space from the bottom */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for centering */
-    z-index: 10; /* Ensure it’s above other content */
-}
-
-.arrow {
-    width: 40px; /* Smaller arrow width */
-    animation: bounce 2s infinite; /* Bounce effect */
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.arrow:hover {
-    opacity: 0.7; /* Slight opacity change on hover */
-}
-
-/* Project container styling */
-.project-container {
-    display: flex; /* Use Flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center the items */
-}
-
-/* Individual project item styling */
-.project-item {
-    position: relative; /* Make relative to position the overlay */
-    display: flex; /* Use flexbox for each item */
-    flex-direction: column; /* Stack image and title vertically */
-    align-items: center; /* Center align items */
-    margin: 20px; /* Space between items */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for fade-out effect */
-}
-
-/* Styling for project images */
-.project-img {
-    width: 100px; /* Set a fixed width for images */
-    height: 100px; /* Set height to make them round */
-    border-radius: 50%; /* Make the image round */
-    border: 3px solid white; /* Add a white border */
-    object-fit: cover; /* Ensure the image covers the area */
-    transition: transform 0.3s; /* Add a transition for hover effect */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.63); /* Default no glow */
-}
-
-/* Overlay styling */
-.project-overlay {
-    position: absolute; /* Position it over the image */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust to center */
-    width: 200px; /* Set a fixed width for the overlay */
-    height: 200px; /* Set a fixed height for the overlay */
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-    color: white; /* Text color */
-    display: flex; /* Use flexbox for centering text */
-    flex-direction: column; /* Stack text vertically */
-    justify-content: center; /* Center the text vertically */
-    align-items: center; /* Center the text horizontally */
-    opacity: 0; /* Start invisible */
-    transition: opacity 0.3s; /* Smooth transition for fade in/out */
-    padding: 10px; /* Add padding for spacing inside the overlay */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
-    z-index: 10; /* Ensure overlay appears above other elements */
-}
-
-/* Show overlay on hover */
-.project-item:hover .project-overlay {
-    opacity: 1; /* Fade in */
-}
-
-/* Title styling */
-.project-title {
-    font-size: 1.2rem; /* Font size for title */
-    color: #333; /* Title color */
-    margin-top: 10px; /* Space between image and title */
-    text-align: center; /* Center title text */
-}
-
-/* Project description styling */
-.project-description {
-    margin: 0; /* Remove default margin */
-    text-align: center; /* Center align the description */
-    font-size: 0.9rem; /* Adjust font size */
-}
-
-/* Project link styling */
-.project-link {
-    color: #ffffff; /* Link color */
-    text-decoration: underline; /* Underline the link */
-    margin-top: 5px; /* Space above the link */
-}
-
-/* Project item hover effect */
-.project-item:hover .project-img {
-    transform: scale(1.05); /* Slightly zoom in on hover */
-}
-
-/* Fade-out effect */
-.project-item.fade-out {
-    opacity: 0; /* Fade out */
-    transform: translateY(-20px); /* Move up slightly */
-}
-
-/* GitHub info container styling */
-.github-info-container {
-    display: flex; /* Align items in a row */
-    justify-content: center; /* Center align items */
-    margin-top: 20px; /* Space between projects and GitHub info */
-}
-
-/* Individual GitHub Info Item */
-.github-info-item {
-    display: flex; /* Use flexbox for each item */
-    align-items: center; /* Center align items */
-    margin: 0 15px; /* Space between items */
-    font-size: 1rem; /* Font size for GitHub info */
-    color: #333; /* Text color */
-    opacity: 0; /* Start hidden for animation */
-    transform: scale(0); /* Start scaled down */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-}
-
-/* Pop-in effect */
-@keyframes pop-in {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2); /* Slightly larger during the pop */
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1); /* Return to original size */
-    }
-}
-
-.pop-in {
-    animation: pop-in 0.5s ease forwards; /* Animation effect */
-}
-
-/* Icon styling */
-.icon {
-    margin-right: 5px; /* Space between icon and text */
-    font-size: 1.2rem; /* Increase icon size */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .project-img {
-        width: 80px; /* Smaller image size on medium screens */
-        height: 80px; /* Maintain round shape */
-    }
-
-    .project-title {
-        font-size: 1rem; /* Smaller title font size */
-    }
-
-    .project-overlay {
-        width: 150px; /* Adjust overlay size for medium screens */
-        height: 150px; /* Adjust overlay size for medium screens */
-    }
-
-    .github-info-item {
-        font-size: 0.9rem; /* Smaller font for GitHub info on medium screens */
-    }
-}
-
-/* Specific adjustments for extra small devices */
-@media (max-width: 576px) {
-    .project-img {
-        width: 60px; /* Further reduce image size */
-        height: 60px; /* Maintain round shape */
-    }
-
-    .project-title {
-        font-size: 0.8rem; /* Further reduce title font size */
-    }
-
-    .project-overlay {
-        width: 120px; /* Further adjust overlay size for small screens */
-        height: 120px; /* Further adjust overlay size for small screens */
-    }
-
-    .github-info-item {
-        font-size: 0.8rem; /* Further reduce font size for small screens */
-    }
-}
-
-
-
-
 /* Responsive font sizing */
 h1, h2 {
     font-size: 2.5rem; /* Font size for larger screens */
@@ -292,60 +88,6 @@ h1, h2 {
 p {
     font-size: 1.25rem; /* Font size for paragraphs */
     font-family: 'Space Grotesk', sans-serif;
-}
-
-/* Media Queries for Font Sizes */
-@media (max-width: 768px) {
-    h1, h2 {
-        font-size: 2rem; /* Smaller font size on smaller devices */
-    }
-
-    p {
-        font-size: 1rem; /* Smaller paragraph size */
-    }
-
-    .arrow {
-        width: 40px; /* Smaller arrow on smaller devices */
-    }
-}
-
-/* Navigation positioning */
-nav {
-    right: 20px; /* Space from the right side */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for perfect centering */
-}
-
-/* Navigation icons */
-.nav-icon {
-    max-width: 50px; /* Set max width for icons */
-    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
-}
-
-/* Zoom effect on hover */
-.nav-link:hover .nav-icon {
-    transform: scale(1.2); /* Zoom in on hover */
-}
-
-/* Responsive navigation styles */
-@media (max-width: 767px) {
-    nav {
-        right: 0; /* Center navigation at the top */
-        top: 0; /* Align to the top */
-        transform: translateX(-50%); /* Adjust to center horizontally */
-        left: 50%; /* Center horizontally */
-        margin-top: 10px; /* Space from the top */
-    }
-
-    /* Remove margins from nav items on smaller screens */
-    .nav-item {
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 10px; /* Space between items */
-    }
-
-    .nav-icon {
-        max-width: 40px; /* Adjust icon size for mobile */
-    }
 }
 
 html, body {
@@ -432,18 +174,6 @@ body.fade-out {
     text-align: center; /* Center the text */
 }
 
-.cv-download {
-    margin-top: 20px; /* Space between icons and download link */
-}
-
-.cv-download a {
-    text-decoration: none; /* Remove underline */
-    padding: 10px 20px; /* Padding for button */
-    color: white; /* White text color */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover */
-}
-
 h2,h3,h5,.touch {
 color: white;
 }
@@ -468,24 +198,6 @@ color: white;
     }
 }
 
-/* Styling for Hidden Stars */
-.star {
-    position: absolute; /* Position stars absolutely */
-    width: 1px; /* Small size to resemble a star */
-    height: 1px;
-    background-color: white; /* Star color */
-    border-radius: 50%; /* Circular shape */
-    opacity: 0.5; /* Low opacity to make them subtle */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for the glow */
-    z-index: 2; /* Keep above background */
-}
-
-/* Glow effect on hover */
-.star:hover {
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8); /* Bright glow effect */
-    transform: scale(1.5); /* Slightly enlarge the star */
-    opacity: 1; /* Increase opacity to full */
-}
 
 /* Base styling for flashing words */
 .flashing-word {
@@ -515,11 +227,6 @@ color: white;
     }
 }
 
-/* Optional fade-out effect for the typing text */
-.fade-out {
-    opacity: 0;
-    transition: opacity 2s;
-}
 
 #section-heading {
     font-size: 7rem; /* Adjust the size as needed */
@@ -612,4 +319,172 @@ p{
     }
 }
 
+.progress {
+    margin: 10px;
+    width: 300px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0.3;
+    transition: opacity 0.3s; /* Transition for hover effect */
+}
 
+.progress-text {
+    color: #fff; /* Change text color to ensure visibility */
+    font-weight: bold; /* Make text bold for better visibility */
+}
+
+.progress:hover {
+    opacity: 1; /* Full visibility on hover */
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+.progress-bar {
+    height: 25px;
+    background: linear-gradient(90deg, #ff6e7f, #bfe9ff);
+    color: rgb(51, 51, 51);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 0; /* Start width at 0 */
+    transition: width 2s ease; /* Smooth transition for width */
+    opacity: 1; /* Ensure it's visible when animating */
+}
+/* Timeline styles */
+.timeline {
+    margin: 20px 0; /* Space around the timeline */
+    width: 50vh; /* Set width of the timeline */
+    padding: 0; /* Remove padding from the container */
+}
+
+.timeline-item:not(:last-child) {
+    margin-bottom: 0; /* Ensure no extra spacing between items */
+}
+
+.timeline-item {
+    position: relative; /* For positioning elements */
+    padding: 20px; /* Padding for content */
+    margin: 0; /* Space between timeline items */
+    transition: background 0.3s ease; /* Smooth background transition */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    opacity: 0.3; /* Default opacity */
+    transform: scale(0.8); /* Initial scale effect */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    border-radius: 12px; /* Rounded edges */
+}
+
+/* Align timestamp and heading */
+.timeline-date {
+    font-weight: thin; /* Bold for emphasis */
+    margin-right: 15px; /* Space between date and heading */
+    flex-shrink: 0; /* Prevent date from shrinking */
+    width: 120px; /* Fixed width for better alignment */
+    font-size: 0.8rem;
+    color: white; /* Set color for date */
+}
+
+.timeline-item .timeline-content #arrow {
+    color: white; /* Set color for arrow */
+    padding-left: 5px; /* Space between arrow and text */
+}
+
+/* Timeline item hover effect */
+.timeline-item:hover {
+    background-color: rgb(51, 51, 51); /* Light grey background on hover */
+    opacity: 1; /* Set opacity on hover */
+    text-decoration: none; /* Remove underline */
+    transition: transform 0.3s ease; /* Optional hover effect */
+    box-shadow: 1px 1px 5px rgba(150, 150, 150, 0.2); /* Optional shadow for depth */
+    border-top: 1px solid #a8a8a85b; /* Border on top */
+    transform: scale(1); /* Scale effect on hover */
+}
+
+/* Change gradient on hover */
+.timeline-item:hover .timeline-content h6, .skills-list li {
+    background: linear-gradient(90deg, #ff6e7f, #bfe9ff); /* New gradient on hover */
+    -webkit-background-clip: text; /* Ensure gradient is applied */
+    -webkit-text-fill-color: transparent; /* Ensure text is filled with gradient */
+}
+.timeline-item:hover .timeline-content #arrow {
+    padding-left: 10px; /* Add space for arrow */
+}
+
+/* Adjust heading styles */
+.timeline-content h4 {
+    margin: 0; /* Remove default margin for heading */
+}
+
+p {
+    font-size: 0.8rem; /* Set font size for paragraphs */
+}
+
+.skills-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Wrap items to next line */
+    gap: 8px; /* Space between labels */
+}
+
+.skills-list li {
+    background-color: #f0f0f0; /* Light gray background for labels */
+    color: #333; /* Dark text for readability */
+    padding: 5px 10px; /* Padding for labels */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 0.8em; /* Font size for labels */
+    font-weight: 500; /* Font weight for labels */
+    display: inline-block; /* Inline display */
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column; /* Ensure vertical layout on small screens */
+        padding: 15px; /* Less padding on smaller screens */
+        justify-content: center;
+        opacity: 1; /* Set full opacity */
+        margin: 0; /* Space between timeline items */
+        background-color: transparent; /* Remove background color */
+        transform: none; /* Remove scale effect */
+    }
+
+    /* Show only date and h6 on smaller screens */
+    .timeline-item p,
+    .skills-list {
+        display: none; /* Hide these elements */
+    }
+
+    .timeline-date {
+        font-size: clamp(0.8rem, 2vw, 1rem); /* Adjust font size for smaller screens */
+        margin-bottom: 5px; /* Space below date */
+        color: white; /* Ensure date remains visible */
+    }
+
+    h6 {
+        font-size: 1.2rem; /* Adjust heading size for smaller screens */
+        color: white; /* Ensure heading remains visible */
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-item {
+        padding: 1rem; /* Less padding on extra small screens */
+        margin: 0; /* Space between timeline items */
+    }
+
+    h6 {
+        font-size: 1rem; /* Further adjust heading size */
+        color: white; /* Ensure heading remains visible */
+    }
+
+    /* Ensure paragraph and skills list remain hidden */
+    .timeline-item p,
+    .skills-list {
+        display: none; /* Maintain hidden state */
+    }
+}
